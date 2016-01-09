@@ -12,8 +12,10 @@ val commonTestSettings = Seq(
   libraryDependencies += "junit" % "junit" % "4.10" % "test")
 
 lazy val funProg = (project in file("."))
+  .aggregate(week0)
   .aggregate(week1)
   .aggregate(week2)
 
-lazy val week1 = (project in file("week1-examples")).settings(commonTestSettings)
-lazy val week2 = (project in file("week2-recfun")).settings(commonTestSettings)
+lazy val week0 = (project in file("week0-examples")).settings(commonTestSettings)
+lazy val week1 = (project in file("week1-recfun")).settings(commonTestSettings)
+lazy val week2 = (project in file("week2-funsets")).settings(commonTestSettings)
