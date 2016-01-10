@@ -78,9 +78,9 @@ object Huffman {
     def timesAcc(chs: List[Char], freq: List[(Char, Int)]): List[(Char, Int)] = {
       if (chs.isEmpty) freq
       else {
-        val cur: Char = chs.head
+        val cur = chs.head
         val curCharFreq: ((Char, Int)) => Boolean = c => c._1 == cur
-        val num: Int = freq.find(curCharFreq).getOrElse((cur, 0))._2
+        val num = freq.find(curCharFreq).getOrElse((cur, 0))._2
         timesAcc(chs.tail, (cur, num + 1) :: freq.filterNot(curCharFreq))
       }
     }
@@ -183,8 +183,8 @@ object Huffman {
     def decodeAcc(bits: List[Bit], chars: List[Char]): List[Char] = {
       if (bits.isEmpty) chars
       else {
-        val tuple = decodeChar(tree, bits)
-        decodeAcc(tuple._2, tuple._1 :: chars)
+        val (ch, curBits) = decodeChar(tree, bits)
+        decodeAcc(curBits, ch :: chars)
       }
     }
     decodeAcc(bits, Nil).reverse
